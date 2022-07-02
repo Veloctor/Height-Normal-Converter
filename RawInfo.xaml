@@ -1,0 +1,56 @@
+﻿<Window x:Class="HeightNormalConverter.RawInfoDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HeightNormalConverter"
+        mc:Ignorable="d"
+        Title="Raw格式设置" SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel Height="300" Width="200" Margin="5,5,5,5">
+            <TextBlock x:Name="FileNameTextBlock" TextWrapping="Wrap" Height="28">xxxxxx.raw</TextBlock>
+            <GroupBox Header="尺寸">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>宽度:</Label>
+                        <TextBox x:Name="WidthTextBox" Width="100" Height="20" VerticalContentAlignment="Center" TextChanged="RefreshFileSize">0</TextBox>
+                        <Label>像素</Label>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>高度:</Label>
+                        <TextBox x:Name="HeightTextBox" Width="100" Height="20" VerticalContentAlignment="Center" TextChanged="RefreshFileSize">0</TextBox>
+                        <Label>像素</Label>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="通道">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>数量:</Label>
+                        <TextBox Name="ChannelCountTextBox" Width="20" Height="20" VerticalContentAlignment="Center" TextChanged="ChannelCountTextBox_TextChanged" Text="3" LostKeyboardFocus="ChannelCountTextBox_LostKeyboardFocus"></TextBox>
+                        <Rectangle Width="5"></Rectangle>
+                        <CheckBox x:Name="InterlacedCheckBox" Content="交错排列(RGBRGB)" IsChecked="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel x:Name="ChannelBitDepthPanel" Orientation="Horizontal">
+                        <Label>通道位深:</Label>
+                        <RadioButton x:Name="ChannelBitDepth8" GroupName="ChannelBitDepth" VerticalAlignment="Center" Content="8" Checked="RefreshFileSize" IsChecked="True"/>
+                        <Rectangle Width="4"/>
+                        <RadioButton x:Name="ChannelBitDepth16" GroupName="ChannelBitDepth" VerticalAlignment="Center" Content="16" Checked="RefreshFileSize"/>
+                        <Rectangle Width="4"/>
+                        <RadioButton x:Name="ChannelBitDepth32" GroupName="ChannelBitDepth" VerticalAlignment="Center" Content="32浮点" Checked="RefreshFileSize"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="文件头">
+                <StackPanel Orientation="Horizontal">
+                    <Label>大小:</Label>
+                    <TextBox x:Name="HeaderSizeTextBox" Width="60" VerticalContentAlignment="Center" TextChanged="RefreshFileSize">0</TextBox>
+                </StackPanel>
+            </GroupBox>
+            <Label Name="DescribedSizeLabel">描述信息大小:114514B</Label>
+            <Label Name="FileSizeLabel">实际文件大小:1919810B</Label>
+            <Rectangle Height="5"></Rectangle>
+            <Button x:Name="ConfirmButton" Width="100" Click="ConfirmButton_Click">确认</Button>
+        </StackPanel>
+    </Grid>
+</Window>
