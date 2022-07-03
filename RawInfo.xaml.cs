@@ -34,12 +34,10 @@ namespace HeightNormalConverter
             {
                 if(count == 1)
                 {
-                    ChannelBitDepthPanel.IsEnabled = false;
                     ChannelCount = count;
                 }
                 else if (count is > 1 and < 56)
                 {
-                    ChannelBitDepthPanel.IsEnabled = true;
                     ChannelCount = count;
                 }
                 RefreshFileSize();

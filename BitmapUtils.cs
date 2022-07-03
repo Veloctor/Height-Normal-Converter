@@ -26,12 +26,12 @@ static class BitmapUtils
             byte G = Marshal.ReadByte(++MemAddress);
             byte B = Marshal.ReadByte(++MemAddress);
             float src = (R * 19595 + G * 38469 + B * 7472) >> 16;
-            return 1 / 255f * src;
+            return src;
         }
         else
         {
             float src = Marshal.ReadByte(MemAddress + channelOffset);
-            return 1 / 255f * src;
+            return src;
         }
     }
     /// <param name="x">目标像素的x</param>

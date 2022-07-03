@@ -226,7 +226,7 @@ public partial class MainWindow : Window
                         targetImageBox.Source = null;
                         targetNameLabel.Content = filePath;
                         targetUnderlyTextBlock.Text = "(图片过大暂不支持预览图,但可正常使用)";
-                        targetInfoTextBlock.Text = $"宽度:{width} 高度:{height} 通道位深:{targetPixelStruct.BytesPerChannel} 像素格式:{f}";
+                        targetInfoTextBlock.Text = $"宽度:{width} 高度:{height} 通道位深:{targetPixelStruct.BytesPerChannel} 通道数量:{targetPixelStruct.ChannelCount}";
                     }
                     else
                     {
