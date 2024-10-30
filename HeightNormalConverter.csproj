@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
+    <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
+	  <Nullable>disable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 

@@ -21,18 +21,14 @@ static class BitmapUtils
 	{
 		nint wrapx = Mod(x, pixelWidth);
 		nint wrapy = Mod(y, pixelHeight);
-		nint MemAddress = target + (wrapy * Bpp * pixelWidth) + (wrapx * Bpp);
-		if (channelOffset < 0) {
-			byte R = Marshal.ReadByte(MemAddress);
-			byte G = Marshal.ReadByte(++MemAddress);
-			byte B = Marshal.ReadByte(++MemAddress);
-			float src = ((R * 19595) + (G * 38469) + (B * 7472)) >> 16;
-			return src;
-		}
-		else {
-			float src = Marshal.ReadByte(MemAddress + channelOffset);
-			return src;
-		}
+		nint MemAddress = target + wrapy * Bpp * pixelWidth + wrapx * Bpp;
+		if (channelOffset >= 0)
+			return Marshal.ReadByte(MemAddress + channelOffset);
+		
+		byte R = Marshal.ReadByte(MemAddress);
+		byte G = Marshal.ReadByte(++MemAddress);
+		byte B = Marshal.ReadByte(++MemAddress);
+		return (R * 19595 + G * 38469 + B * 7472) >> 16;
 	}
 	/// <param name="x">目标像素的x</param>
 	/// <param name="y">目标像素的y</param>
@@ -125,6 +121,8 @@ static class BitmapUtils
 			BytesPerChannel = BytesPerChannel,
 		};
 	}
+
+	public static bool IsTrue(this bool? value) => value.HasValue && value.Value;
 }
 struct PixelStruct
 {

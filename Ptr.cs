@@ -8,7 +8,7 @@ namespace Velctor.Utils
 	/// </summary>
 	public struct Ptr<T> where T : unmanaged
 	{
-		private unsafe T* addr;
+		unsafe T* addr;
 		public readonly unsafe ref T Target => ref *addr;
 
 		public readonly unsafe bool IsNull => addr == null;
